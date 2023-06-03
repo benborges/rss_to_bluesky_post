@@ -12,7 +12,9 @@ How to make it a zip file
 We will hit the command as follows in the local environment where Python3.10 is installed. (mac only)
 
 $ python -m venv venv
+
 $ source venv/bin/activate
+
 $ pip install -r requirements.txt
 
 Go to the venv/lib/python<Python version>/site-packages directory and copy all dependencies to the same directory as your Lambda function code.
