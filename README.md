@@ -1,7 +1,29 @@
-## Translation 
+## Use this code in a basic shell context
 Script to automatically post RSS to Bluesky
 overview
 
+### steps to prep
+
+$ pip install --upgrade pip
+ 
+$ pip --version
+
+$ pip install virtualenv
+
+$ virtualenv -p python3 bluesky (name of your env)
+
+$ source bluesky/bin/activate
+
+$ pip install -r requirements.txt
+
+### modify bluesky_post.py
+
+    ATP_HOST -- Fill in your Bluesky host name Example: https://bsky.social
+    ATP_USERNAME -- Enter your username Example: benbo.bsky.social
+    ATP_PASSWORD -- enter password
+    RSS_FEED_URL -- Enter the URL of the RSS feed you want to get data from. Example: RSS feed URL
+
+## old instruction for Eventbridge context
 Basically, referring to this Python script, I just read RSS and made it work with lambda.
 
 TwitterToBluesky-bluemo-public
