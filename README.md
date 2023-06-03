@@ -1,48 +1,38 @@
-# RSSをBlueskyに自動投稿するスクリプト
+## Translation 
+Script to automatically post RSS to Bluesky
+overview
 
-## 概要
+Basically, referring to this Python script, I just read RSS and made it work with lambda.
 
-基本的にはこちらの方のPythonスクリプトを参考に、RSSを読み込むようにしてlambdaで動くようにしただけ。
-
-TwitterToBluesky - bluemo-public
+TwitterToBluesky-bluemo-public
 
 https://scrapbox.io/blu3mo-public/TwitterToBluesky
+How to make it a zip file
 
-## zipファイルにする方法
+We will hit the command as follows in the local environment where Python3.10 is installed. (mac only)
 
-Python3.10をインストールしたローカル環境で次のようにコマンドを叩いていきます。（macのみ）
-
-```
 $ python -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
-```
 
-venv/lib/python<Pythonバージョン>/site-packagesディレクトリに移動し、Lambda関数のコードと同じディレクトリにすべての依存関係をコピーします。
+Go to the venv/lib/python<Python version>/site-packages directory and copy all dependencies to the same directory as your Lambda function code.
 
-最後にディレクトリをZIPファイルに圧縮します。
+Finally compress the directory into a ZIP file.
 
-```
 cd lambda_package
 zip -r ../lambda_package.zip .
-```
 
-lambda関数を作成して、環境変数を設定する。
+Create a lambda function and set environment variables.
 
-環境変数は下記。
+The environment variables are below.
 
-- ATP_HOST
--- Blueskyのホスト名を記入する　例: https://bsky.social
-- ATP_USERNAME
--- ユーザ名を入力する　例: yuki2021.bsky.social
-- ATP_PASSWORD
--- パスワードを入力する
-- RSS_FEED_URL
--- データを取りたいRSSフィードのURLを入力する　例: https://www.ituki-yu2.net/rss
+    ATP_HOST -- Fill in your Bluesky host name Example: https://bsky.social
+    ATP_USERNAME -- Enter your username Example: yuki2021.bsky.social
+    ATP_PASSWORD -- enter password
+    RSS_FEED_URL -- Enter the URL of the RSS feed you want to get data from. Example: https://www.ituki-yu2.net/rss
 
-後は、EventBridgeなりで動かせば指定の時間にブログの最新記事をBlueskyに投稿します。
+After that, if you run it with EventBridge, it will post the latest blog article to Bluesky at the specified time.
+important point
 
-## 注意点
-
-- ランタイム設定のハンドラーは`bluesky_post.lambda_handler`です。
-- タイムアウト時間は1分ぐらいです。
+    Handlers for runtime settings bluesky_post.lambda_handler.
+    Timeout is about 1 minute.
